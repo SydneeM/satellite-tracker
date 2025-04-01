@@ -5,7 +5,7 @@ function App() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch('/api/satellites');
+        const response = await fetch('/api/satellites/25544');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

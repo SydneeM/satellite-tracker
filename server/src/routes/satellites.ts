@@ -3,8 +3,9 @@ import { Satellite } from '../models/satellite';
 
 const router = Router();
 
-router.get('/', (req: Request, res: Response) => {
-  fetch('https://api.n2yo.com/rest/v1/satellite/tle/25544&apiKey=' + process.env.N2Y0_KEY)
+router.get('/:id', (req: Request, res: Response) => {
+  const satId = req.params.id;
+  fetch('https://api.n2yo.com/rest/v1/satellite/tle/' + satId + '&apiKey=' + process.env.N2Y0_KEY)
   .then((response) => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
