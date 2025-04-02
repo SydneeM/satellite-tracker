@@ -1,13 +1,15 @@
 import 'dotenv/config';
 import express, { Request, Response } from 'express';
+import connectDB from './config/connectDB';
 import satellites from './routes/satellites';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+connectDB();
+
 app.use(express.json());
 app.use('/satellites', satellites);
-
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello world');
 });

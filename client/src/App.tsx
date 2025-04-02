@@ -11,7 +11,7 @@ function App() {
         }
 
         const data = await response.json();
-        console.log(data)
+        console.log(data);
       } catch (err) {
         console.log(err);
       }
@@ -20,9 +20,36 @@ function App() {
     getData();
   }, []);
 
+  const handleAdd = async () => {
+    try {
+      const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: 25544, name: 'Space Station', comments: '' })
+      };
+
+      const response = await fetch('/api/satellites/', options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
-    <Map />
-  )
+    <div>
+      <Map />
+      <button
+        onClick={handleAdd}
+      >
+        Add Satellite
+      </button>
+    </div>
+  );
 }
 
 export default App
