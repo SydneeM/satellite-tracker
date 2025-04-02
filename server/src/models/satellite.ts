@@ -1,11 +1,11 @@
+import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
-interface SatelliteInfo {
-  satid: number;
-  satname: string;
-  transactionscount: number;
-}
+const SatelliteSchema = new Schema({
+  id: Number,
+  name: String,
+  comments: String,
+});
 
-export interface Satellite {
-  info: SatelliteInfo;
-  tle: string;
-}
+const Satellite = mongoose.model('Satellite', SatelliteSchema);
+export default Satellite;
