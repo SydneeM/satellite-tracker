@@ -1,18 +1,26 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
+import { MapContainer, TileLayer, Popup, CircleMarker } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import { Track } from './App';
 
-export default function Map() {
+interface MapProps {
+  tracks: Track[];
+}
+
+function Map({ tracks }: MapProps) {
   return (
     <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true} className='h-[50vh] w-screen'>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       />
-      <Marker position={[51.505, -0.09]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
+      {tracks.length > 0 &&
+        tracks.map((track: Track) => (
+          <CircleMarker key={track.id} center={[track.lat, track.lng]} radius={10}>
+            <Popup>{track.id}<br />{track.name}</Popup>
+          </CircleMarker>
+        ))}
     </MapContainer>
   )
 }
+
+export default Map;

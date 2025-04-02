@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Map from './Map'
 
-interface Track {
+export interface Track {
   id: number;
   name: string;
   lat: number;
@@ -31,8 +31,7 @@ function App() {
         }
 
         const data = await response.json();
-        console.log('tracks:', data);
-        setTracks(data);
+        setTracks(prevTracks => [...prevTracks, data]);
       } catch (err) {
         console.log(err);
       }
@@ -102,7 +101,7 @@ function App() {
 
   return (
     <div>
-      <Map />
+      <Map tracks={tracks} />
       <button
         onClick={handleAdd}
       >
