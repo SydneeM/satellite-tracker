@@ -3,9 +3,9 @@ import Map from './Map'
 
 function App() {
   useEffect(() => {
-    const getData = async () => {
+    const getSatellites = async () => {
       try {
-        const response = await fetch('/api/satellites/25544');
+        const response = await fetch('/api/satellites/');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -17,7 +17,7 @@ function App() {
       }
     };
 
-    getData();
+    getSatellites();
   }, []);
 
   const handleAdd = async () => {
@@ -38,7 +38,7 @@ function App() {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   return (
     <div>

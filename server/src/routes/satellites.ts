@@ -21,6 +21,16 @@ router.get('/:id', (req: Request, res: Response) => {
     });
 });
 
+router.get('/', (req: Request, res: Response) => {
+  SavedSatelliteModel.find({})
+    .then((found) => {
+      res.json(found);
+    })
+    .catch(error => {
+      console.log('Get error:', error);
+    });
+});
+
 router.post('/', (req: Request, res: Response) => {
   const newSat = new SavedSatelliteModel(req.body);
   newSat.save()
