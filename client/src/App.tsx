@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import Map from './Map'
 
+const MS_INTERVAL = 300000;
+
 export interface Track {
   id: number;
   name: string;
@@ -24,22 +26,28 @@ function App() {
 
   useEffect(() => {
     const getTrackingInfo = async () => {
-      try {
-        const response = await fetch('/api/tracks/25544');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+      if (sats.length > 0) {
+        try {
+          const allTracks: Track[] = await Promise.all(
+            sats.map((sat: Satellite) => fetch(`/api/tracks/${sat.id}`)
+              .then(response => response.json())
+              .catch(err => ({ err }))
+            )
+          );
+          setTracks(allTracks);
+        } catch (err) {
+          console.log(err);
         }
-
-        const data = await response.json();
-        setTracks(prevTracks => [...prevTracks, data]);
-      } catch (err) {
-        console.log(err);
       }
     };
 
-    if (sats.length > 0) {
+    getTrackingInfo();
+
+    const intervalId = setInterval(() => {
       getTrackingInfo();
-    }
+    }, MS_INTERVAL);
+
+    return () => clearInterval(intervalId);
   }, [sats]);
 
   useEffect(() => {

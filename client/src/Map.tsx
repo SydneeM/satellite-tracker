@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { MapContainer, TileLayer, Popup, CircleMarker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Track } from './App';
@@ -6,7 +7,7 @@ interface MapProps {
   tracks: Track[];
 }
 
-function Map({ tracks }: MapProps) {
+const Map = memo(function Map({ tracks }: MapProps) {
   return (
     <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true} className='h-[50vh] w-screen'>
       <TileLayer
@@ -21,6 +22,6 @@ function Map({ tracks }: MapProps) {
         ))}
     </MapContainer>
   )
-}
+});
 
 export default Map;
