@@ -6,6 +6,8 @@ const router = Router();
 router.get('/', (req: Request, res: Response) => {
   Satellite.find({})
     .then((found) => {
+      console.log('Got all sats:', found);
+
       res.json(found);
     })
     .catch(error => {
@@ -17,6 +19,7 @@ router.post('/', (req: Request, res: Response) => {
   const newSat = new Satellite(req.body);
   newSat.save()
     .then((saved) => {
+      console.log('Saved new sat:', saved);
       res.json(saved);
     })
     .catch(error => {

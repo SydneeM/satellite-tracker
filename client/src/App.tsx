@@ -61,6 +61,7 @@ function App() {
         }
 
         const data: Satellite[] = await response.json();
+        console.log('Got sats:', data);
         setSats(data);
       } catch (err) {
         console.log(err);
@@ -90,6 +91,7 @@ function App() {
       }
 
       const data: Satellite = await response.json();
+      console.log('Added sat:', data);
       setSats(prevSats => [...prevSats, data]);
     } catch (err) {
       console.log(err);
