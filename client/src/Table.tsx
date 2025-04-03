@@ -7,15 +7,21 @@ interface TableProps {
 }
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'Satellite Id', width: 300 },
-  { field: 'name', headerName: 'Satellite Name', width: 300 },
-  { field: 'comments', headerName: 'Comments', width: 300 }
+  { field: 'id', headerName: 'Satellite Id', flex: 1 },
+  { field: 'name', headerName: 'Satellite Name', flex: 1 },
+  { field: 'comments', headerName: 'Comments', flex: 1 }
 ];
 
 const Table = memo(function Table({ sats }: TableProps) {
   return (
-    <div className='h-[30vh] w-screen'>
-      <DataGrid rows={sats} columns={columns} />
+    <div className='h-[30vh] w-[80vw]'>
+      <DataGrid
+        sx={{
+          backgroundColor: '#f0f0f0'
+        }}
+        rows={sats}
+        columns={columns}
+      />
     </div>
   );
 });

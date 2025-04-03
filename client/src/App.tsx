@@ -116,39 +116,129 @@ function App() {
   };
 
   return (
-    <div>
+    <div className='flex flex-col gap-y-10 items-center'>
       <Map tracks={tracks} />
-      <Table sats={sats} />
-      <Button
-        onClick={handleAdd}
-      >
-        Add Satellite
-      </Button>
-      <TextField
-        value={addSatId}
-        label='Satellite Id'
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddSatId(Number(e.target.value))}
-      />
-      <TextField
-        value={addSatName}
-        label='Satellite Name'
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddSatName(e.target.value)}
-      />
-      <TextField
-        value={addSatComments}
-        label='Comments'
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddSatComments(e.target.value)}
-      />
-      <Button
-        onClick={handleDelete}
-      >
-        Delete Satellite
-      </Button>
-      <TextField
-        value={deleteSatId}
-        label='Satellite Id'
-        onChange={e => setDeleteSatId(Number(e.target.value))}
-      />
+      <div className='flex flex-col w-fit gap-y-10'>
+        <Table sats={sats} />
+        <div className='flex flex-row gap-x-8'>
+          <div className='flex flex-row gap-x-2'>
+            <Button
+              sx={{
+                backgroundColor: '#aad3df',
+                color: '#1e2024',
+                '&:hover': {
+                  backgroundColor: 'white'
+                }
+              }}
+              onClick={handleAdd}
+            >
+              Add Satellite
+            </Button>
+            <TextField
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  color: '#f0f0f0',
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#f0f0f0',
+                    borderWidth: '1px'
+                  },
+                  '&:hover': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: '#aad3df',
+                    },
+                  }
+                },
+                '& .MuiInputLabel-outlined': {
+                  color: '#f0f0f0'
+                }
+              }}
+              value={addSatId}
+              label='Satellite Id'
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddSatId(Number(e.target.value))}
+            />
+            <TextField
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  color: '#f0f0f0',
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#f0f0f0',
+                    borderWidth: '1px'
+                  },
+                  '&:hover': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: '#aad3df',
+                    },
+                  }
+                },
+                '& .MuiInputLabel-outlined': {
+                  color: '#f0f0f0'
+                }
+              }}
+              value={addSatName}
+              label='Satellite Name'
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddSatName(e.target.value)}
+            />
+            <TextField
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  color: '#f0f0f0',
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#f0f0f0',
+                    borderWidth: '1px'
+                  },
+                  '&:hover': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: '#aad3df',
+                    },
+                  }
+                },
+                '& .MuiInputLabel-outlined': {
+                  color: '#f0f0f0'
+                }
+              }}
+              value={addSatComments}
+              label='Comments'
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddSatComments(e.target.value)}
+            />
+          </div>
+          <div className='flex flex-row gap-x-2'>
+            <Button
+              sx={{
+                backgroundColor: '#aad3df',
+                color: '#1e2024',
+                '&:hover': {
+                  backgroundColor: 'white'
+                }
+              }}
+              onClick={handleDelete}
+            >
+              Delete Satellite
+            </Button>
+            <TextField
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  color: '#f0f0f0',
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#f0f0f0',
+                    borderWidth: '1px'
+                  },
+                  '&:hover': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: '#aad3df',
+                    },
+                  }
+                },
+                '& .MuiInputLabel-outlined': {
+                  color: '#f0f0f0'
+                }
+              }}
+              value={deleteSatId}
+              label='Satellite Id'
+              onChange={e => setDeleteSatId(Number(e.target.value))}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
