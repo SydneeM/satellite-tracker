@@ -1,11 +1,18 @@
 import { memo } from 'react';
-import { MapContainer, TileLayer, Popup, CircleMarker } from 'react-leaflet';
+import { MapContainer, TileLayer, Popup, Marker } from 'react-leaflet';
+import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Track } from '../App';
 
 interface MapProps {
   tracks: Track[];
 }
+
+const icon = new Icon({
+  iconUrl: '/sat.png',
+  iconSize: [30, 30],
+  popupAnchor: [0, -15]
+});
 
 const Map = memo(function Map({ tracks }: MapProps) {
   return (
@@ -16,9 +23,13 @@ const Map = memo(function Map({ tracks }: MapProps) {
       />
       {tracks.length > 0 &&
         tracks.map((track: Track) => (
-          <CircleMarker key={track.id} center={[track.lat, track.lng]} radius={10}>
+          <Marker
+            key={track.id}
+            position={[track.lat, track.lng]}
+            icon={icon}
+          >
             <Popup>{track.id}<br />{track.name}</Popup>
-          </CircleMarker>
+          </Marker>
         ))}
     </MapContainer>
   );
