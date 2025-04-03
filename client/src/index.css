@@ -81,7 +81,7 @@ button:focus-visible {
   width: fit-content;
   margin-top: auto;
   margin-bottom: auto;
-  row-gap: 2rem;
+  row-gap: 3rem;
 }
 
 #sat-input-container {
