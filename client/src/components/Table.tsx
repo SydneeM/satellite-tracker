@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { Satellite } from './App';
+import { Satellite } from '../App';
 
 interface TableProps {
   sats: Satellite[];
@@ -9,7 +9,7 @@ interface TableProps {
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'Satellite Id', flex: 1 },
   { field: 'name', headerName: 'Satellite Name', flex: 1 },
-  { field: 'comments', headerName: 'Comments', flex: 1 }
+  { field: 'comments', headerName: 'Comments', editable: true, flex: 1 }
 ];
 
 const Table = memo(function Table({ sats }: TableProps) {

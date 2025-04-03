@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Button, TextField } from '@mui/material';
-import Map from './Map';
-import Table from './Table';
+import Map from './components/Map';
+import Table from './components/Table';
+import StyledNumberInput from './components/StyledNumberInput';
+import StyledTextInput from './components/StyledTextInput';
+import StyledButton from './components/StyledButton';
 
 const MS_INTERVAL = 300000;
 
@@ -120,147 +122,35 @@ function App() {
         <Table sats={sats} />
         <div className='flex flex-row gap-x-8'>
           <div className='flex flex-row gap-x-2'>
-            <Button
-              sx={{
-                backgroundColor: '#aad3df',
-                color: '#1e2024',
-                '&:hover': {
-                  backgroundColor: 'white'
-                }
-              }}
-              onClick={handleAdd}
-            >
-              Add Satellite
-            </Button>
-            <TextField
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  color: '#f0f0f0',
-                  '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#f0f0f0'
-                  },
-                  '&.Mui-focused': {
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#aad3df',
-                    },
-                  },
-                  '&:hover': {
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#aad3df',
-                    },
-                  }
-                },
-                '& .MuiInputLabel-outlined': {
-                  color: '#f0f0f0',
-                  '&.Mui-focused': {
-                    color: '#aad3df'
-                  }
-                }
-              }}
+            <StyledButton
+              label='Add Satellite'
+              action={handleAdd}
+            />
+            <StyledNumberInput
               value={addSatId}
+              valueSetter={setAddSatId}
               label='Satellite Id'
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddSatId(Number(e.target.value))}
             />
-            <TextField
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  color: '#f0f0f0',
-                  '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#f0f0f0'
-                  },
-                  '&.Mui-focused': {
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#aad3df',
-                    },
-                  },
-                  '&:hover': {
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#aad3df',
-                    },
-                  }
-                },
-                '& .MuiInputLabel-outlined': {
-                  color: '#f0f0f0',
-                  '&.Mui-focused': {
-                    color: '#aad3df'
-                  }
-                }
-              }}
+            <StyledTextInput
               value={addSatName}
+              valueSetter={setAddSatName}
               label='Satellite Name'
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddSatName(e.target.value)}
             />
-            <TextField
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  color: '#f0f0f0',
-                  '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#f0f0f0'
-                  },
-                  '&.Mui-focused': {
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#aad3df',
-                    },
-                  },
-                  '&:hover': {
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#aad3df',
-                    },
-                  }
-                },
-                '& .MuiInputLabel-outlined': {
-                  color: '#f0f0f0',
-                  '&.Mui-focused': {
-                    color: '#aad3df'
-                  }
-                }
-              }}
+            <StyledTextInput
               value={addSatComments}
+              valueSetter={setAddSatComments}
               label='Comments'
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddSatComments(e.target.value)}
             />
           </div>
           <div className='flex flex-row gap-x-2'>
-            <Button
-              sx={{
-                backgroundColor: '#aad3df',
-                color: '#1e2024',
-                '&:hover': {
-                  backgroundColor: 'white'
-                }
-              }}
-              onClick={handleDelete}
-            >
-              Delete Satellite
-            </Button>
-            <TextField
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  color: '#f0f0f0',
-                  '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#f0f0f0'
-                  },
-                  '&.Mui-focused': {
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#aad3df',
-                    },
-                  },
-                  '&:hover': {
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#aad3df',
-                    },
-                  }
-                },
-                '& .MuiInputLabel-outlined': {
-                  color: '#f0f0f0',
-                  '&.Mui-focused': {
-                    color: '#aad3df'
-                  }
-                }
-              }}
+            <StyledButton
+              label='Delete Satellite'
+              action={handleDelete}
+            />
+            <StyledNumberInput
               value={deleteSatId}
+              valueSetter={setDeleteSatId}
               label='Satellite Id'
-              onChange={e => setDeleteSatId(Number(e.target.value))}
             />
           </div>
         </div>

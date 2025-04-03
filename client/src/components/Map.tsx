@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { MapContainer, TileLayer, Popup, CircleMarker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Track } from './App';
+import { Track } from '../App';
 
 interface MapProps {
   tracks: Track[];
@@ -21,7 +21,7 @@ const Map = memo(function Map({ tracks }: MapProps) {
           </CircleMarker>
         ))}
     </MapContainer>
-  )
+  );
 });
 
 export default Map;
