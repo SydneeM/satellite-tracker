@@ -28,18 +28,16 @@ function App() {
 
   useEffect(() => {
     const getTrackingInfo = async () => {
-      if (sats.length > 0) {
-        try {
-          const allTracks: Track[] = await Promise.all(
-            sats.map((sat: Satellite) => fetch(`/api/tracks/${sat.id}`)
-              .then(response => response.json())
-              .catch(err => ({ err }))
-            )
-          );
-          setTracks(allTracks);
-        } catch (err) {
-          console.log(err);
-        }
+      try {
+        const allTracks: Track[] = await Promise.all(
+          sats.map((sat: Satellite) => fetch(`/api/tracks/${sat.id}`)
+            .then(response => response.json())
+            .catch(err => ({ err }))
+          )
+        );
+        setTracks(allTracks);
+      } catch (err) {
+        console.log(err);
       }
     };
 
@@ -153,7 +151,10 @@ function App() {
                   }
                 },
                 '& .MuiInputLabel-outlined': {
-                  color: '#f0f0f0'
+                  color: '#f0f0f0',
+                  '&.Mui-focused': {
+                    color: '#aad3df'
+                  }
                 }
               }}
               value={addSatId}
@@ -179,7 +180,10 @@ function App() {
                   }
                 },
                 '& .MuiInputLabel-outlined': {
-                  color: '#f0f0f0'
+                  color: '#f0f0f0',
+                  '&.Mui-focused': {
+                    color: '#aad3df'
+                  }
                 }
               }}
               value={addSatName}
@@ -205,7 +209,10 @@ function App() {
                   }
                 },
                 '& .MuiInputLabel-outlined': {
-                  color: '#f0f0f0'
+                  color: '#f0f0f0',
+                  '&.Mui-focused': {
+                    color: '#aad3df'
+                  }
                 }
               }}
               value={addSatComments}
@@ -245,7 +252,10 @@ function App() {
                   }
                 },
                 '& .MuiInputLabel-outlined': {
-                  color: '#f0f0f0'
+                  color: '#f0f0f0',
+                  '&.Mui-focused': {
+                    color: '#aad3df'
+                  }
                 }
               }}
               value={deleteSatId}
