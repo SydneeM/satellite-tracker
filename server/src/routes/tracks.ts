@@ -27,6 +27,7 @@ router.get('/:id', (req: Request, res: Response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+      console.log('Got track data:', response.status, response.url);
       return response.json();
     })
     .then((data: NoradInfo) => {
