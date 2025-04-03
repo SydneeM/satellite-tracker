@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react'
-import Map from './Map'
+import { useState, useEffect } from 'react';
+import { Button, TextField } from '@mui/material';
+import Map from './Map';
+import Table from './Table';
 
 const MS_INTERVAL = 300000;
 
@@ -10,10 +12,10 @@ export interface Track {
   lng: number;
 }
 
-interface Satellite {
+export interface Satellite {
   id: number;
   name: string;
-  comment: string;
+  comments: string;
 }
 
 function App() {
@@ -58,7 +60,7 @@ function App() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
+        const data: Satellite[] = await response.json();
         setSats(data);
       } catch (err) {
         console.log(err);
@@ -70,10 +72,16 @@ function App() {
 
   const handleAdd = async () => {
     try {
+      const newSat: Satellite = {
+        id: addSatId,
+        name: addSatName,
+        comments: addSatComments
+      };
+
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: addSatId, name: addSatName, comments: addSatComments })
+        body: JSON.stringify(newSat)
       };
 
       const response = await fetch('/api/satellites/', options);
@@ -81,7 +89,7 @@ function App() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
+      const data: Satellite = await response.json();
       setSats(prevSats => [...prevSats, data]);
     } catch (err) {
       console.log(err);
@@ -100,8 +108,8 @@ function App() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
-      console.log(data);
+      const updatedSats = sats.filter((sat: Satellite) => sat.id !== deleteSatId);
+      setSats(updatedSats);
     } catch (err) {
       console.log(err);
     }
@@ -110,30 +118,35 @@ function App() {
   return (
     <div>
       <Map tracks={tracks} />
-      <button
+      <Table sats={sats} />
+      <Button
         onClick={handleAdd}
       >
         Add Satellite
-      </button>
-      <input
+      </Button>
+      <TextField
         value={addSatId}
-        onChange={e => setAddSatId(Number(e.target.value))}
+        label='Satellite Id'
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddSatId(Number(e.target.value))}
       />
-      <input
+      <TextField
         value={addSatName}
-        onChange={e => setAddSatName(e.target.value)}
+        label='Satellite Name'
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddSatName(e.target.value)}
       />
-      <input
+      <TextField
         value={addSatComments}
-        onChange={e => setAddSatComments(e.target.value)}
+        label='Comments'
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddSatComments(e.target.value)}
       />
-      <button
+      <Button
         onClick={handleDelete}
       >
         Delete Satellite
-      </button>
-      <input
+      </Button>
+      <TextField
         value={deleteSatId}
+        label='Satellite Id'
         onChange={e => setDeleteSatId(Number(e.target.value))}
       />
     </div>
