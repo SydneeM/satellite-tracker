@@ -139,8 +139,12 @@ function App() {
                 '& .MuiOutlinedInput-root': {
                   color: '#f0f0f0',
                   '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#f0f0f0',
-                    borderWidth: '1px'
+                    borderColor: '#f0f0f0'
+                  },
+                  '&.Mui-focused': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: '#aad3df',
+                    },
                   },
                   '&:hover': {
                     '& .MuiOutlinedInput-notchedOutline': {
@@ -161,8 +165,12 @@ function App() {
                 '& .MuiOutlinedInput-root': {
                   color: '#f0f0f0',
                   '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#f0f0f0',
-                    borderWidth: '1px'
+                    borderColor: '#f0f0f0'
+                  },
+                  '&.Mui-focused': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: '#aad3df',
+                    },
                   },
                   '&:hover': {
                     '& .MuiOutlinedInput-notchedOutline': {
@@ -183,8 +191,12 @@ function App() {
                 '& .MuiOutlinedInput-root': {
                   color: '#f0f0f0',
                   '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#f0f0f0',
-                    borderWidth: '1px'
+                    borderColor: '#f0f0f0'
+                  },
+                  '&.Mui-focused': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: '#aad3df',
+                    },
                   },
                   '&:hover': {
                     '& .MuiOutlinedInput-notchedOutline': {
@@ -219,8 +231,12 @@ function App() {
                 '& .MuiOutlinedInput-root': {
                   color: '#f0f0f0',
                   '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#f0f0f0',
-                    borderWidth: '1px'
+                    borderColor: '#f0f0f0'
+                  },
+                  '&.Mui-focused': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: '#aad3df',
+                    },
                   },
                   '&:hover': {
                     '& .MuiOutlinedInput-notchedOutline': {
