@@ -2,6 +2,8 @@
 
 satellite-tracker is a tool for tracking satellites via NORAD id.
 
+![satMap](https://github.com/user-attachments/assets/afc3aa2d-9294-4047-80ab-b5deb8d8544d)
+
 ## Environment Variables
 To run this project, you will need to add the following environment variables to your server/.env file:
 
