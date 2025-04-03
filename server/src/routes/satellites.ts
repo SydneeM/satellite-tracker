@@ -7,11 +7,23 @@ router.get('/', (req: Request, res: Response) => {
   Satellite.find({})
     .then((found) => {
       console.log('Got all sats:', found);
-
       res.json(found);
     })
     .catch(error => {
       console.log('Get error:', error);
+    });
+});
+
+router.patch('/:id', (req: Request, res: Response) => {
+  const filter = { id: req.params.id };
+  const update = (req.body);
+  Satellite.findOneAndUpdate(filter, update)
+    .then((updated) => {
+      console.log('Updated sat:', updated);
+      res.json(updated);
+    })
+    .catch(error => {
+      console.log('Patch error:', error);
     });
 });
 
@@ -31,6 +43,7 @@ router.delete('/:id', (req: Request, res: Response) => {
   const satId = req.params.id;
   Satellite.deleteOne({ id: satId })
     .then((deleted) => {
+      console.log('Deleted sat:', deleted);
       res.json(deleted);
     })
     .catch(error => {

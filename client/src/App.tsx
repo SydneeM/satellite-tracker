@@ -71,6 +71,30 @@ function App() {
     getSatellites();
   }, []);
 
+  const handleUpdate = async (newVal: Satellite) => {
+    try {
+      const options = {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ comments: newVal.comments })
+      };
+
+      const response = await fetch(`/api/satellites/${newVal.id}`, options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data: Satellite = await response.json();
+      let updatedSats: Satellite[] = JSON.parse(JSON.stringify(sats));
+      const index = updatedSats.findIndex((sat: Satellite)=> sat.id === newVal.id);
+      updatedSats[index] = newVal;
+      console.log('Updated sats:', updatedSats);
+      setSats(updatedSats);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleAdd = async () => {
     try {
       const newSat: Satellite = {
@@ -121,7 +145,7 @@ function App() {
     <div className='flex flex-col gap-y-10 items-center'>
       <Map tracks={tracks} />
       <div className='flex flex-col w-fit gap-y-10'>
-        <Table sats={sats} />
+        <Table sats={sats} updateSat={handleUpdate} />
         <div className='flex flex-row gap-x-8'>
           <div className='flex flex-row gap-x-2'>
             <StyledButton

@@ -4,6 +4,7 @@ import { Satellite } from '../App';
 
 interface TableProps {
   sats: Satellite[];
+  updateSat: (updatedSat: Satellite) => void;
 }
 
 const columns: GridColDef[] = [
@@ -12,7 +13,16 @@ const columns: GridColDef[] = [
   { field: 'comments', headerName: 'Comments', editable: true, flex: 1 }
 ];
 
-const Table = memo(function Table({ sats }: TableProps) {
+const Table = memo(function Table({ sats, updateSat }: TableProps) {
+  const handleUpdate = (updatedRow: Satellite) => {
+    updateSat(updatedRow);
+    return updatedRow;
+  };
+
+  const handleUpdateError = (error: Error) => {
+    console.log('Error updating cell:', error);
+  };
+
   return (
     <div className='h-[30vh] w-[80vw]'>
       <DataGrid
@@ -21,6 +31,8 @@ const Table = memo(function Table({ sats }: TableProps) {
         }}
         rows={sats}
         columns={columns}
+        processRowUpdate={handleUpdate}
+        onProcessRowUpdateError={handleUpdateError}
       />
     </div>
   );
