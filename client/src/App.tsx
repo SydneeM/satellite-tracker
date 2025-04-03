@@ -88,7 +88,7 @@ function App() {
       let updatedSats: Satellite[] = JSON.parse(JSON.stringify(sats));
       const index = updatedSats.findIndex((sat: Satellite)=> sat.id === newVal.id);
       updatedSats[index] = newVal;
-      console.log('Updated sats:', updatedSats);
+      console.log('Updated sats:', data, 'changed to', newVal);
       setSats(updatedSats);
     } catch (err) {
       console.log(err);
