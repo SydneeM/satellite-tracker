@@ -14,14 +14,12 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^7.0.1",
     "@mui/x-data-grid": "^7.28.2",
-    "@tailwindcss/vite": "^4.0.17",
     "@types/webidl-conversions": "^7.0.3",
     "@types/whatwg-url": "^13.0.0",
     "leaflet": "^1.9.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-leaflet": "^5.0.0",
-    "tailwindcss": "^4.0.17"
+    "react-leaflet": "^5.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

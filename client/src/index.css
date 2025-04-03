@@ -1,5 +1,3 @@
-@import 'tailwindcss';
-
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,8 +26,11 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
+  width: 100vw;
+  align-items: center;
 }
 
 h1 {
@@ -56,4 +57,41 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+#map {
+  height: 50vh;
+  width: 100vw;
+}
+
+#table {
+  width: 85vw;
+}
+
+#app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#interactive-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin-top: auto;
+  margin-bottom: auto;
+  row-gap: 2rem;
+}
+
+#sat-input-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
+}
+
+.sat-input-group {
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
 }

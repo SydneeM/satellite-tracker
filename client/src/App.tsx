@@ -85,8 +85,8 @@ function App() {
       }
 
       const data: Satellite = await response.json();
-      let updatedSats: Satellite[] = JSON.parse(JSON.stringify(sats));
-      const index = updatedSats.findIndex((sat: Satellite)=> sat.id === newVal.id);
+      const updatedSats: Satellite[] = JSON.parse(JSON.stringify(sats));
+      const index = updatedSats.findIndex((sat: Satellite) => sat.id === newVal.id);
       updatedSats[index] = newVal;
       console.log('Updated sats:', data, 'changed to', newVal);
       setSats(updatedSats);
@@ -142,12 +142,12 @@ function App() {
   };
 
   return (
-    <div className='flex flex-col gap-y-10 items-center'>
+    <div id='app-container'>
       <Map tracks={tracks} />
-      <div className='flex flex-col w-fit gap-y-10'>
+      <div id='interactive-container'>
         <Table sats={sats} updateSat={handleUpdate} />
-        <div className='flex flex-row gap-x-8'>
-          <div className='flex flex-row gap-x-2'>
+        <div id='sat-input-container'>
+          <div className='sat-input-group'>
             <StyledButton
               label='Add Satellite'
               action={handleAdd}
@@ -168,7 +168,7 @@ function App() {
               label='Comments'
             />
           </div>
-          <div className='flex flex-row gap-x-2'>
+          <div className='sat-input-group'>
             <StyledButton
               label='Delete Satellite'
               action={handleDelete}

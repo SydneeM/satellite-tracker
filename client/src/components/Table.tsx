@@ -24,7 +24,7 @@ const Table = memo(function Table({ sats, updateSat }: TableProps) {
   };
 
   return (
-    <div className='h-[30vh] w-[80vw]'>
+    <div id='table'>
       <DataGrid
         sx={{
           backgroundColor: '#f0f0f0'
