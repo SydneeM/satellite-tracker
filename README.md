@@ -78,7 +78,7 @@ Run build script
 npm run build
 ```
 
-## Run for Production
+## Test Production Build
 Go to the server directory
 
 ```bash
