@@ -9,11 +9,11 @@ const SatelliteSchema = new Schema(
   },
   {
     toJSON: {
-      transform: function (doc, ret) {
-        delete ret._id;
-        delete ret.__v;
-      }
-    }
+      transform(_doc, ret) {
+        const { _id, __v, ...rest } = ret;
+        return rest;
+      },
+    },
   }
 );
 
